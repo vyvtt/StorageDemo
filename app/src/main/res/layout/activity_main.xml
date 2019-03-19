@@ -31,4 +31,10 @@
         android:text="Show List SharePreferences"
         android:onClick="clickToShowSharePreferences"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show List SQLite"
+        android:onClick="clickToShowSQLite"/>
+
 </LinearLayout>

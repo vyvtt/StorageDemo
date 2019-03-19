@@ -32,4 +32,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ShowStormSharePreferencesActivity.class);
         startActivity(intent);
     }
+
+    public void clickToShowSQLite(View view) {
+        Intent intent = new Intent(this, ShowStormSQLiteActivity.class);
+        startActivity(intent);
+    }
 }

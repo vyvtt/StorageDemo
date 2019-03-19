@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.thuyvy.storm.dbhelper.StormDbHelper;
 import com.thuyvy.storm.model.Storm;
 
 import org.json.JSONException;
@@ -44,7 +45,14 @@ public class AddStormActivity extends AppCompatActivity {
         String id = edtId.getText().toString().trim();
         String name = edtName.getText().toString().trim();
         String des = edtDes.getText().toString().trim();
-        float speed = Float.valueOf(edtSpeed.getText().toString());
+        String strSpeed = edtSpeed.getText().toString();
+        float speed = 0;
+
+        if (strSpeed.isEmpty()) {
+            Toast.makeText(this, "Empty field!", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        speed = Float.valueOf(strSpeed);
 
         if (id.isEmpty() || name.isEmpty() || des.isEmpty()) {
             Toast.makeText(this, "Empty field!", Toast.LENGTH_LONG).show();
@@ -173,6 +181,10 @@ public class AddStormActivity extends AppCompatActivity {
     }
 
     public void clickToSaveSQLite(View view) {
-
+        if (getData()) {
+            StormDbHelper helper = new StormDbHelper(this);
+            helper.addEntry(storm);
+            Toast.makeText(this, "Save SQLite success", Toast.LENGTH_SHORT).show();
+        }
     }
 }
